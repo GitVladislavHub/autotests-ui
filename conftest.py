@@ -1,3 +1,3 @@
-pytest_plugin = (
+pytest_plugins = (
     "fixtures.browsers"
 )

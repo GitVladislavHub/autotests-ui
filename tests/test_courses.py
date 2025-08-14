@@ -6,12 +6,10 @@ from pages.create_course_page import CreateCoursePage
 
 @pytest.mark.regression
 @pytest.mark.courses
-def test_create_course_full_flow(chromium_page_with_state):
+def test_create_course_full_flow(chromium_page_with_state, courses_list_page, create_course_page):
     chromium_page_with_state.goto(
         "https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create"
     )
-
-    create_course_page = CreateCoursePage(chromium_page_with_state)
 
     create_course_page.check_visible_create_course_title()
 
@@ -49,8 +47,6 @@ def test_create_course_full_flow(chromium_page_with_state):
     )
 
     create_course_page.click_create_course_button()
-
-    courses_list_page = CoursesListPage(chromium_page_with_state)
 
     courses_list_page.check_visible_courses_title()
     courses_list_page.check_visible_create_course_button()

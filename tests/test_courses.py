@@ -3,7 +3,7 @@ import pytest
 
 @pytest.mark.regression
 @pytest.mark.courses
-def test_create_course_full_flow(chromium_page_with_state, courses_list_page, create_course_page):
+def test_create_course(chromium_page_with_state, courses_list_page, create_course_page):
     create_course_page.visit(
         "https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create"
     )

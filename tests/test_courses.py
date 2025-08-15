@@ -1,13 +1,10 @@
 import pytest
 
-from pages.courses_list_page import CoursesListPage
-from pages.create_course_page import CreateCoursePage
-
 
 @pytest.mark.regression
 @pytest.mark.courses
 def test_create_course_full_flow(chromium_page_with_state, courses_list_page, create_course_page):
-    chromium_page_with_state.goto(
+    create_course_page.visit(
         "https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create"
     )
 

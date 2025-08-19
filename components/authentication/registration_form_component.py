@@ -1,27 +1,33 @@
 from playwright.sync_api import Page
+
 from components.base_component import BaseComponent
 from elements.input import Input
 
 
 class RegistrationFormComponent(BaseComponent):
-    def __init__(self, page: Page, identifier: str):
+    def __init__(self, page: Page):
         super().__init__(page)
-        self.identifier = identifier
 
-        self.email = Input(page, '{identifier}-email-input', 'Email')
-        self.username = Input(page, '{identifier}-username-input', 'Username')
-        self.password = Input(page, '{identifier}-password-input', 'Password')
+        self.email_input = Input(page, 'registration-form-email-input', 'Email')
+        self.username_input = Input(page, 'registration-form-username-input', 'Username')
+        self.password_input = Input(page, 'registration-form-password-input', 'Password')
 
-    def fill_registration_form(self, email: str, password: str, username: str):
-        self.email.fill(email, identifier=self.identifier)
-        self.username.fill(username, identifier=self.identifier)
-        self.password.fill(password, identifier=self.identifier)
+    def fill(self, email: str, username: str, password: str):
+        self.email_input.fill(email)
+        self.email_input.check_have_value(email)
 
-    def check_visible(self):
-        self.email.check_visible(identifier=self.identifier)
-        self.email.check_have_text("user@gmail.com", identifier=self.identifier)
+        self.username_input.fill(username)
+        self.username_input.check_have_value(username)
 
-        self.username.check_visible(identifier=self.identifier)
-        self.username.check_have_text("username", identifier=self.identifier)
+        self.password_input.fill(password)
+        self.password_input.check_have_value(password)
 
-        self.password.check_visible(identifier=self.identifier)
+    def check_visible(self, email: str, username: str, password: str):
+        self.email_input.check_visible()
+        self.email_input.check_have_value(email)
+
+        self.username_input.check_visible()
+        self.username_input.check_have_value(username)
+
+        self.password_input.check_visible()
+        self.password_input.check_have_value(password)

@@ -12,8 +12,8 @@ from pages.base_page import BasePage
 class CreateCoursePage(BasePage):
     def __init__(self, page: Page):
         super().__init__(page)
-        self.create_course_form = CreateCourseFormComponent(page, 'create-course-form')
-        self.navbar = NavbarComponent(page, 'courses-list')
+        self.create_course_form = CreateCourseFormComponent(page)
+        self.navbar = NavbarComponent(page)
         self.image_upload_widget = ImageUploadWidgetComponent(page, 'create-course-preview')
         self.exercises_empty_view = EmptyViewComponent(page, 'create-course-exercises')
         self.create_exercise_form = CreateCourseExerciseFormComponent(page)

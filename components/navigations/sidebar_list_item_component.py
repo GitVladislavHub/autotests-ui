@@ -11,9 +11,9 @@ from elements.text import Text
 class SidebarListItemComponent(BaseComponent):
     def __init__(self, page: Page, identifier: str):
         super().__init__(page)
-        self.icon = Icon(page, '{identifier}-drawer-list-item-icon', 'Icon')
-        self.title = Text(page, '{identifier}-drawer-list-item-title-text', 'Text')
-        self.button = Button(page, '{identifier}-drawer-list-item-button', 'Button')
+        self.icon = Icon(page, f'{identifier}-drawer-list-item-icon', 'Icon')
+        self.title = Text(page, f'{identifier}-drawer-list-item-title-text', 'Text')
+        self.button = Button(page, f'{identifier}-drawer-list-item-button', 'Button')
 
     def check_visible(self, title: str):
         self.icon.check_visible()

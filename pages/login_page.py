@@ -9,7 +9,7 @@ from playwright.sync_api import Page, expect
 class LoginPage(BasePage):
     def __init__(self, page: Page):
         super().__init__(page)
-        self.login_form = LoginFormComponent(page, 'login-form')
+        self.login_form = LoginFormComponent(page)
 
         self.login_button = Button(page, 'login-page-login-button', 'Login')
         self.registration_link = Link(page, 'login-page-registration-link', 'Registration')

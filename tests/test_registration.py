@@ -7,7 +7,7 @@ from pages.registration_page import RegistrationPage
 @pytest.mark.registration
 def test_successful_registration( dashboard_page: DashBoardPage, registration_page: RegistrationPage):
         registration_page.visit('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration')
-        registration_page.registration_form.fill_registration_form(
+        registration_page.registration_form.fill(
             email="email",
             username="username",
             password="password"

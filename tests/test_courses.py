@@ -43,3 +43,52 @@ def test_empty_courses_list(courses_list_page: CoursesListPage):
 
     courses_list_page.toolbar_view.check_visible()
     courses_list_page.check_visible_empty_view()
+
+def test_edit_course(create_course_page: CreateCoursePage, courses_list_page: CoursesListPage):
+    create_course_page.visit("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create")
+    create_course_page.create_course_form.check_visible(
+        title="",
+        estimated_time="",
+        description="",
+        max_score='0',
+        min_score='0'
+    )
+    create_course_page.create_toolbar_view.create_course_button.check_disabled()
+    create_course_page.image_upload_widget.upload_preview_image("./testdata/files/image.png")
+    create_course_page.create_course_form.fill(
+        title='Go',
+        estimated_time='3 weeks',
+        description='Go',
+        max_score='100',
+        min_score = '10'
+    )
+    create_course_page.create_toolbar_view.create_course_button.check_visible()
+    create_course_page.create_toolbar_view.click_create_course_button()
+    create_course_page.page.wait_for_url("**/#/courses")
+    courses_list_page.toolbar_view.check_visible()
+    courses_list_page.course_view.check_visible(
+        index=0,
+        estimated_time='3 weeks',
+        title='Go',
+        max_score='100',
+        min_score='10'
+    )
+    courses_list_page.course_view.menu.click_edit(index=0)
+    create_course_page.page.get_by_text("Update course").wait_for()
+    create_course_page.create_course_form.fill(
+        title='Go Pro',
+        estimated_time='6 weeks',
+        description='Go Pro',
+        max_score='100',
+        min_score='10'
+    )
+    create_course_page.create_toolbar_view.click_create_course_button()
+    courses_list_page.toolbar_view.check_visible()
+    courses_list_page.course_view.check_visible(
+        index=0,
+        title='Go Pro',
+        estimated_time='6 weeks',
+        max_score='100',
+        min_score='10'
+    )
+

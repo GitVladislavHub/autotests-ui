@@ -10,12 +10,12 @@ def test_several_numbers(number: int, expected: int):
     assert number ** 2 == expected
 
 
-@pytest.mark.parametrize('os', ['macos', 'windows', 'linux', 'debian'])
-@pytest.mark.parametrize('browser', ['chromium','webkit', 'firefox'])
+@pytest.mark.parametrize('os', ['Macos', 'Windows', 'Linux', 'Debian'])
+@pytest.mark.parametrize('browser', ['Chromium','Webkit', 'Firefox'])
 def test_multiplication_of_numbers(os: str, browser: str):
     assert len(os + browser) > 0
 
-@pytest.fixture(params=['chromium','webkit', 'firefox'])
+@pytest.fixture(params=['Chromium','Webkit', 'Firefox'])
 def browser(request: SubRequest):
     return request.param
 

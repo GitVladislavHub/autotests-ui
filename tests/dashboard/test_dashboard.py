@@ -3,8 +3,8 @@ import pytest
 from pages.dashboard_page import DashBoardPage
 
 
-@pytest.mark.regression
 @pytest.mark.dashboard
+@pytest.mark.regression
 def test_dashboard_displaying(dashboard_page_with_state: DashBoardPage):
     dashboard_page_with_state.visit('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/dashboard')
 
